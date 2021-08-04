@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react'
 
 import io from 'socket.io-client'
 
-import { AppBar, Button, Drawer } from '@material-ui/core'
-
 import './RoomLandingPage.css'
 
 import RoomLandingPageHeader from './RoomLandingPageHeader/RoomLandingPageHeader'
@@ -12,6 +10,14 @@ import OnlineStatusSideDrawer from './OnlineStatusSideDrawer/OnlineStatusSideDra
 
 let socket
 
+/* 
+TODO: 
+Remove the white space around the RoomLandingPage Div( the div that surrounds everything)
+Make the black border for the above div go all the way down to bottom of page ( make div take up whole page)
+Start adding socket.io functionality
+
+
+*/
 
 const RoomLandingPage = () => {
 
