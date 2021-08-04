@@ -1,0 +1,27 @@
+.RoomLandingPage{
+    font-family: monospace;
+    border: 5px solid black;
+}
+
+.RoomLandingPageHeader{
+    font-family: monospace;
+}
+
+.RoomListings{
+    color:violet;
+}
+
+#RoomLandingPageHeaderText{
+    text-align: center;
+}
+
+
+
+
+
+div.MuiPaper-root {
+    border: 2px solid black;
+}
+.Button{
+    float:left;
+}

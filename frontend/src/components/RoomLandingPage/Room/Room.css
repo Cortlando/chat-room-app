@@ -1,0 +1,13 @@
+.MuiButtonBase-root.MuiButton-root.MuiButton-text.Room{
+    background-color: violet;
+    width: 100%;
+    font-family: monospace;
+    
+    
+}
+html body div#root div.App div div.RoomListings div.RoomListing button.MuiButtonBase-root.MuiButton-root.MuiButton-text.Room span.MuiButton-label {
+    display: block;
+    color: yellow;
+    text-align: left;
+    
+}
