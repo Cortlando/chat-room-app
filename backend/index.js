@@ -23,6 +23,10 @@ io.on('connection', (socket) => {
     socket.on('disconnect', () =>{
         console.log('User Disconnected')
     })
+
+    socket.on('join room', () => {
+        console.log("Joined Room")
+    })
 })
 
 

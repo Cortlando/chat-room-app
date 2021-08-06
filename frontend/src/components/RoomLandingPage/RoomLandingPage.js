@@ -5,7 +5,7 @@ import io from 'socket.io-client'
 import './RoomLandingPage.css'
 
 import RoomLandingPageHeader from './RoomLandingPageHeader/RoomLandingPageHeader'
-import Room from './Room/Room'
+import RoomListing from './RoomListing/RoomListing'
 import OnlineStatusSideDrawer from './OnlineStatusSideDrawer/OnlineStatusSideDrawer'
 
 let socket
@@ -22,7 +22,8 @@ Start adding socket.io functionality
 const RoomLandingPage = () => {
 
     const [users, setUsers] = useState('')
-    const [roooms, setRooms] = useState('')
+    const [rooms, setRooms] = useState('')
+    const [isLoading, setLoading] = useState(true)
     const ENDPOINT = 'localhost:4000'
 
     useEffect(() => {
@@ -32,27 +33,63 @@ const RoomLandingPage = () => {
             console.log(socket.connected)
         })
 
+        setLoading(false)
 
 
-    }, [socket])
+    })
+
+
+    if (isLoading) {
+        return (
+            <div>
+                Loading....
+            </div>
+
+        )
+
+    }
+    else{
+        return (
+            <div className="RoomLandingPage">
+                <div className="RoomLandingPageHeader">
+                    <RoomLandingPageHeader rooms={rooms} setRooms={setRooms} />
+                </div>
+                <div className="RoomListings">
+                    <div className="RoomListing">
+                         <RoomListing socket={socket} />
+    
+                    </div>
+                </div>
+    
+                <div className="OnlineStatusSideDrawer">
+                    <OnlineStatusSideDrawer />
+    
+                </div>
+    
+    
+            </div>
+        )
+    }
+
 
     return (
         <div className="RoomLandingPage">
             <div className="RoomLandingPageHeader">
-                <RoomLandingPageHeader/>
+                <RoomLandingPageHeader rooms={rooms} setRooms={setRooms} />
             </div>
             <div className="RoomListings">
                 <div className="RoomListing">
-                    <Room/>
+                    {socket === undefined ? "loading..." : <RoomListing socket={socket} />}
+
                 </div>
             </div>
 
             <div className="OnlineStatusSideDrawer">
-                <OnlineStatusSideDrawer/>
+                <OnlineStatusSideDrawer />
 
             </div>
 
-            
+
         </div>
     )
 
