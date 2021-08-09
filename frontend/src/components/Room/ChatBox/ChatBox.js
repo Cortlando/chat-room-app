@@ -8,7 +8,7 @@ const ChatBox = () => {
 
     return(
         <div>
-            aaaa
+            This is the chat box
         </div>
     )
 }
