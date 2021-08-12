@@ -5,9 +5,17 @@ import { BrowserRouter, Route, Switch, Link} from 'react-router-dom'
 
 import RoomLandingPage from './components/RoomLandingPage/RoomLandingPage'
 import Room from './components/Room/Room'
+
+import io from 'socket.io-client'
+import SocketContext from './SocketContext'
+
+const ENDPOINT = 'localhost:4000'
+const socket = io(ENDPOINT)
+
 function App() {
   return (
     <div className="App">
+      <SocketContext.Provider value={socket}>
       <BrowserRouter>
         <div>
           <Switch>
@@ -16,7 +24,7 @@ function App() {
           </Switch>
         </div>
       </BrowserRouter>
-
+      </SocketContext.Provider>
     </div>
   );
 }

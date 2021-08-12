@@ -18,6 +18,14 @@ const port = 4000
 io.on('connection', (socket) => {
     console.log('a user connected')
 
+   // socket.emit(io.sockets.adapter.rooms)
+
+   //io.emit(io.sockets.adapter.rooms)
+   socket.emit(io.sockets.adapter.rooms)
+
+    socket.on('connect', () => {
+        
+    })
 
     socket.on('disconnect', () =>{
         console.log('User Disconnected')
@@ -26,9 +34,19 @@ io.on('connection', (socket) => {
     socket.on('join room', () => {
         console.log("Joined Room")
     })
+
+    socket.on('create', function(room) {
+        socket.join(room)
+        console.log(room)
+    })
+
+    socket.on('sendMessage', (data) => {
+       // console.log("aaaaaaa")
+        console.log('message: ' + data)
+    })
 })
 
-
+//setInterval(() => console.log(io.sockets.adapter.rooms), 5000)
 
 
 server.listen(port, () => {

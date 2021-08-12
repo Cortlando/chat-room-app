@@ -6,6 +6,7 @@ import App from './App';
 import './index.css'
 import { Auth0Provider } from "@auth0/auth0-react";
 
+//TODO: (maybe) make it so that if someone gets timed out from their auth0 session, they get booted from the room
 
 
 ReactDOM.render(

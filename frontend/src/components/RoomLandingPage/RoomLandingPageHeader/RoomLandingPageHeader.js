@@ -2,7 +2,6 @@ import React from 'react'
 
 import { AppBar, IconButton, Typography, Toolbar } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
-import Modal from '@material-ui/core/Modal'
 import AddIcon from '@material-ui/icons/Add'
 
 
@@ -11,36 +10,58 @@ import LoginButton from './LoginButton/LoginButton'
 import LogoutButton from './LogoutButton/LogoutButton'
 import Profile from './Profile/Profile'
 
-// TODO: Add a profile picture to the header. Question mark when logged out, profile picture( or first letter of their name) when logged in
+import { useAuth0 } from '@auth0/auth0-react'
+
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+      flexGrow: 1,
+    },
+    menuButton: {
+      marginRight: theme.spacing(2),
+    },
+    title: {
+      flexGrow: 1,
+    },
+  }));
+
 const RoomLandingPageHeader = ({ rooms, setRooms }) => {
 
+    const classes = useStyles();
+
     const [open, setOpen] = React.useState(false);
-  
+
+    const { isAuthenticated } = useAuth0()
+
     const handleOpen = () => {
         setOpen(true);
-      };
-    
-      const handleClose = () => {
+    };
+
+    const handleClose = () => {
         setOpen(false);
-      };
+    };
 
     console.log(rooms, setRooms)
+
+    
     return (
-        <AppBar position="static" >
+        <div className={classes.root}>
+          <AppBar position="static">
             <Toolbar>
-                <Typography align="left">
-                    <IconButton onClick={handleOpen}>
-                        <AddIcon />
-                    </IconButton>
-                    <CreateRoom open={open} setOpen={setOpen} handleOpen={handleOpen} handleClose={handleClose}/>
-                    Click to create a room
-                    <LoginButton/>
-                    <LogoutButton/>
-                    <Profile/>
-                </Typography>
+              <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu" onClick={handleOpen}>
+                <AddIcon />
+              </IconButton>
+              <Typography variant="h6" className={classes.title}>
+                Click to create a room
+              </Typography>
+              <CreateRoom open={open} setOpen={setOpen} handleOpen={handleOpen} handleClose={handleClose} />
+              {isAuthenticated ? <LogoutButton/> : <LoginButton/>}
+                <Profile/>
             </Toolbar>
-        </AppBar>
-    )
+          </AppBar>
+        </div>
+      );
+
 }
 
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 
 import io from 'socket.io-client'
 
@@ -6,9 +6,9 @@ import './RoomLandingPage.css'
 
 import RoomLandingPageHeader from './RoomLandingPageHeader/RoomLandingPageHeader'
 import RoomListing from './RoomListing/RoomListing'
-import OnlineStatusSideDrawer from './OnlineStatusSideDrawer/OnlineStatusSideDrawer'
+import SocketContext from '../../SocketContext'
 
-let socket
+//let socket
 
 /* 
 TODO: 
@@ -19,24 +19,29 @@ Start adding socket.io functionality
 
 */
 
+
+//TODO: ReAdd the OnlineStatusSideDrawer and figure out how to make it not cover the header
+
 const RoomLandingPage = () => {
 
     const [users, setUsers] = useState('')
     const [rooms, setRooms] = useState('')
     const [isLoading, setLoading] = useState(true)
-    const ENDPOINT = 'localhost:4000'
+    
+
+    const socket = useContext(SocketContext)
 
     useEffect(() => {
-        socket = io(ENDPOINT)
 
         socket.on("connect", () => {
             console.log(socket.connected)
+            
         })
 
         setLoading(false)
-
-
-    })
+        
+        console.log(socket)
+    }, [socket])
 
 
     if (isLoading) {
@@ -61,37 +66,13 @@ const RoomLandingPage = () => {
                     </div>
                 </div>
     
-                <div className="OnlineStatusSideDrawer">
-                    <OnlineStatusSideDrawer />
-    
-                </div>
+
     
     
             </div>
         )
     }
 
-
-    return (
-        <div className="RoomLandingPage">
-            <div className="RoomLandingPageHeader">
-                <RoomLandingPageHeader rooms={rooms} setRooms={setRooms} />
-            </div>
-            <div className="RoomListings">
-                <div className="RoomListing">
-                    {socket === undefined ? "loading..." : <RoomListing socket={socket} />}
-
-                </div>
-            </div>
-
-            <div className="OnlineStatusSideDrawer">
-                <OnlineStatusSideDrawer />
-
-            </div>
-
-
-        </div>
-    )
 
 }
 

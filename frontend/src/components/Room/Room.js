@@ -1,21 +1,23 @@
-import React, {useState, useEffect} from 'react'
-
-import io from 'socket.io-client'
+import React, { useState, useEffect, useContext } from 'react'
 
 import QueryString from 'query-string'
 import RoomPageHeader from './RoomPageHeader/RoomPageHeader'
 import ChatBox from './ChatBox/ChatBox'
-let socket
+import Input from './Input/Input'
+import SocketContext from '../../SocketContext'
+import { useAuth0 } from "@auth0/auth0-react";
 
 
+//TODO: Make it so users can join other peoples rooms, and rooms are visible on landing page
 
-const Room = ({location}) => {
+const Room = ({ location }) => {
 
     const [roomName, setRoomName] = useState('')
     const [message, setMessage] = useState('')
     const [messages, setMessages] = useState([])
-    const ENDPOINT = 'localhost:4000'
+    const { user } = useAuth0()
 
+    /*
     useEffect(() => {
        
         let {roomName} = QueryString.parse(location.search)
@@ -54,21 +56,50 @@ const Room = ({location}) => {
             socket.emit('sendMessage', message, () => setMessage(''))
         }
     }
+    */
 
-  //  console.log(location)
-    return(
+    const socket = useContext(SocketContext)
+
+    useEffect(() => {
+
+        let { roomName } = QueryString.parse(location.search)
+
+        setRoomName(roomName)
+
+        socket.emit('create', `${roomName}`)
+
+
+    }, [location.search, socket])
+
+    // useEffect(() => {
+    //     socket.on('message', msg => {
+    //         setMessages(msg => [...messages, message])
+    //     })
+    // }, [messages, message, socket])
+
+   // console.log(user)
+    //  console.log(location)
+
+    // useEffect(() => {
+    //     setMessages(msg => [...messages, message])
+    // },[message, messages])
+    if(messages){
+        console.log(messages)
+    }
+    return (
         <div className="RoomPage">
             <div className="RoomPageHeader">
-                <RoomPageHeader roomName = {roomName}/>
+                <RoomPageHeader roomName={roomName} />
             </div>
             <div className="ChatBox">
-                    <ChatBox messages={messages} />
+                <ChatBox messages = {messages} user = {user}/>
             </div>
-           <div className="inputBar">
-                asda
-           </div>
+            <div>
+                <Input message={message} setMessage={setMessage} socket={socket} messages={messages} setMessages={setMessages} />
+            </div>
         </div>
     )
+
 }
 
 export default Room
