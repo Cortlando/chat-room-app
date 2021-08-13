@@ -9,16 +9,6 @@ const Profile = () => {
     return <div>Loading ...</div>;
   }
 
-  // return (
-  //   isAuthenticated && (
-  //     <div>
-  //       <Avatar src={user.picture}/>
-
-  //     </div>
-  //   )
-
-  // );
-
   if (isAuthenticated) {
     return (
       <div>

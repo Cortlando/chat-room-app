@@ -6,20 +6,15 @@ import './RoomListing.css'
 
 import io from 'socket.io-client'
 
-const RoomListing = ({socket}) => {
+const RoomListing = ({roomName}) => {
 
-    useEffect(() =>{
-        socket.on("join room", () => {
-            console.log("Joined Room")
-        })
-    })
 
     return (
         <Button className="Room">
 
-        <p>Room Name</p>
+        <p>{roomName}</p>
 
-        <p>Number of People in Room</p>
+        
     </Button>
     )
 }

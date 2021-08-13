@@ -23,8 +23,9 @@ io.on('connection', (socket) => {
    //io.emit(io.sockets.adapter.rooms)
    socket.emit(io.sockets.adapter.rooms)
 
+    console.log(io.sockets.adapter.rooms)
     socket.on('connect', () => {
-        
+        console.log("This happened")
     })
 
     socket.on('disconnect', () =>{
@@ -36,14 +37,24 @@ io.on('connection', (socket) => {
     })
 
     socket.on('create', function(room) {
-        socket.join(room)
+        socket.join(room + "+")
         console.log(room)
     })
 
-    socket.on('sendMessage', (data) => {
+    socket.on('sendMessage', ({message, user}) => {
        // console.log("aaaaaaa")
-        console.log('message: ' + data)
+        console.log('message: ' + message)
+        console.log(user)
     })
+
+    // socket.on('getRooms', ({rooms}) =>{
+    //     rooms = io.sockets.adapter.rooms
+        
+        
+    // })
+    let rooms = io.sockets.adapter.rooms
+    console.log(rooms + "THese the rooms")
+    socket.emit("sentRooms", {roomList: JSON.stringify(Array.from(rooms))})
 })
 
 //setInterval(() => console.log(io.sockets.adapter.rooms), 5000)

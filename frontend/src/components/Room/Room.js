@@ -17,47 +17,6 @@ const Room = ({ location }) => {
     const [messages, setMessages] = useState([])
     const { user } = useAuth0()
 
-    /*
-    useEffect(() => {
-       
-        let {roomName} = QueryString.parse(location.search)
-
-        setRoomName(roomName)
-
-        socket = io(ENDPOINT)
-
-        socket.emit('join', {roomName}, (error) =>{
-            if(error){
-                alert(error)
-            }
-        })
-
-        return () => {
-            socket.disconnect()
-
-            socket.off()
-        }
-  
-    }, [location.search])
-
-    
-    //Gets all
-    useEffect(() => {
-        socket.on('message', message => {
-            setMessages(messages => [...messages, message])
-        })
-    }, [messages])
-
-
-    const sendMessage = (e) => {
-        e.preventDefault()
-
-        if(message){
-            socket.emit('sendMessage', message, () => setMessage(''))
-        }
-    }
-    */
-
     const socket = useContext(SocketContext)
 
     useEffect(() => {
@@ -95,7 +54,7 @@ const Room = ({ location }) => {
                 <ChatBox messages = {messages} user = {user}/>
             </div>
             <div>
-                <Input message={message} setMessage={setMessage} socket={socket} messages={messages} setMessages={setMessages} />
+                <Input message={message} setMessage={setMessage} socket={socket} messages={messages} setMessages={setMessages} user={user} />
             </div>
         </div>
     )

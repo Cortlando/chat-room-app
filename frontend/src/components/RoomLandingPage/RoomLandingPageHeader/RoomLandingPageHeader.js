@@ -41,7 +41,7 @@ const RoomLandingPageHeader = ({ rooms, setRooms }) => {
         setOpen(false);
     };
 
-    console.log(rooms, setRooms)
+    //console.log(rooms, setRooms)
 
     
     return (
