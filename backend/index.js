@@ -46,10 +46,12 @@ io.on('connection', (socket) => {
     socket.on('sendMessage', ({message, user,roomName}) => {
        // console.log("aaaaaaa")
         console.log('message: ' + message)
-        user === undefined ? console.log("User is undefined") : console.log(user)
+        let nickname = ''
+        user === undefined ? nickname = 'Guest' : nickname = user.nickname
+        
         
         //socket.to(`${roomName}`).emit('recieveMessage', {message})
-        socket.broadcast.to(`${roomName + '+'}`).emit('recieveMessage', {message, user})
+        socket.broadcast.to(`${roomName + '+'}`).emit('recieveMessage', {message, nickname})
     })
 
     // socket.on('getRooms', ({rooms}) =>{

@@ -1,0 +1,20 @@
+.ChatBox{
+    background-color: black;
+    
+    height: 100%;
+}
+
+.RoomPage{
+    background-color: black;
+    
+    margin: 0;
+}
+
+body{
+    background-color: black;
+}
+
+.MessageInput{
+    display:flex;
+    justify-content: center;
+}

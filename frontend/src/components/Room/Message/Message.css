@@ -1,0 +1,35 @@
+.messageContainer{
+    clear: both;
+    position: relative;
+    display: block;
+    background-color: red;
+    border-radius: 15px;
+    outline: yellow solid 2px;
+    padding-left: 5px;
+}
+
+.messageTextHomeBackground{
+    text-align: right;
+    justify-content: right;
+    
+}
+
+#messageTextHome{
+    
+}
+
+#messageName{
+    background-color: blue;
+    
+}
+
+.messageTextForiegn{
+    text-align: left;
+    justify-content: left;
+}
+
+p{
+    color: whitesmoke;
+    
+}
+

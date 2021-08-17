@@ -7,16 +7,18 @@ import Input from './Input/Input'
 import SocketContext from '../../SocketContext'
 import { useAuth0 } from "@auth0/auth0-react";
 
+import './Room.css'
 
-//TODO: Make it so users can join other peoples rooms
-//TODO: Might have to make it so it checks if the room name is in already when create is emitted. If it is just join without creating it
+
+
 //TODO: Look into whether you can change timeout times
-
+//TODO: (Maybe) move the recieveMessage event into the chatbox component, hopefully will improve performance
 const Room = ({ location }) => {
 
     const [roomName, setRoomName] = useState('')
     const [message, setMessage] = useState('')
-    const [messages, setMessages] = useState([])
+    const [messages, setMessages] = useState([], '')
+   //const [messages, setMessages] = useState([{message:'', byme: false}])
     const { user } = useAuth0()
 
     const socket = useContext(SocketContext)
@@ -34,15 +36,15 @@ const Room = ({ location }) => {
 
     useEffect(() => {
         socket.on('recieveMessage', function(msg) {
-            console.log(msg)
-            setMessages( [...messages, msg.message])
-            console.log("IT WORKS")
+         //   console.log(msg)
+            setMessages( [...messages, msg.message + `+-+${msg.nickname}`])
+           // console.log("IT WORKS")
         })
     },[socket, messages])
 
-    if(messages){
-        console.log(messages)
-    }
+    // if(messages){
+    //     console.log(messages)
+    // }
     return (
         <div className="RoomPage">
             <div className="RoomPageHeader">
@@ -54,7 +56,7 @@ const Room = ({ location }) => {
                 messages = {messages} 
                 user = {user}/>
             </div>
-            <div>
+            <div className="MessageInput">
                 <Input 
                 message={message} 
                 setMessage={setMessage} 

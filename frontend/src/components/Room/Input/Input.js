@@ -6,6 +6,7 @@ import './Input.css'
 import SocketContext from '../../../SocketContext'
 
 //TODO: Stylize the input and button, move it to the bottom of the page
+//TODO: Optimize the input, make it so setMessage isn't called every onChange
 const Input = ({ message, setMessage, messages, setMessages, user, roomName }) => {
 
     const socket = useContext(SocketContext)
@@ -23,7 +24,7 @@ const Input = ({ message, setMessage, messages, setMessages, user, roomName }) =
     }
 
     return(
-        <div>
+        <div className="inputBar">
             <input type="text" 
             name="name" 
             value={message} 

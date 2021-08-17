@@ -2,15 +2,16 @@ import React from 'react'
 
 import Message from '../Message/Message'
 
+import './ChatBox.css'
 
 //TODO: Make the box fill up most of the screen
 const ChatBox = ({messages, user}) => {
 
-    console.log(user)
+    //console.log(user)
 
     if(messages && user){
         return(
-            <div className="chatBox">
+            <div className="message">
             {messages.map((message, i) => <div key={i}><Message message={message} user = {user}/></div>)}
             </div>
         )
