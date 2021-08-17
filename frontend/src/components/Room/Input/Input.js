@@ -11,8 +11,11 @@ const Input = ({ message, setMessage, messages, setMessages, user, roomName }) =
 
     const socket = useContext(SocketContext)
 
+    
+
     function sendMessage(message) {
         console.log(message)
+
        if(message && user){
            socket.emit('sendMessage', {message, user, roomName}, () => setMessage(''))
            setMessages(oldMessages => [...oldMessages, message])

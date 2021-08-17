@@ -2,8 +2,9 @@
     background-color: violet;
     width: 100%;
     font-family: monospace;
+    font-size: large;
     
-    
+    justify-content: flex-start;
 }
 html body div#root div.App div div.RoomListings div.RoomListing button.MuiButtonBase-root.MuiButton-root.MuiButton-text.Room span.MuiButton-label {
     display: block;

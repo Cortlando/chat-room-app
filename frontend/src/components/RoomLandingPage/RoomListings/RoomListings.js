@@ -9,7 +9,7 @@ const RoomListings = ({cleanedRoomList}) => {
     console.log(cleanedRoomList)
     if(cleanedRoomList !== []){
         return(
-            <div>
+            <div className="roomListingsList">
                 {cleanedRoomList.map((roomName, i) => <div key={i}><RoomListing roomName={roomName}/></div>)}
             </div>
         )
