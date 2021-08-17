@@ -32,19 +32,24 @@ io.on('connection', (socket) => {
         console.log('User Disconnected')
     })
 
-    socket.on('join room', () => {
+    socket.on('join room', (roomName) => {
         console.log("Joined Room")
+        console.log(roomName)
     })
 
+    //This one is the one that actually adds people to a room, depsite not being join room
     socket.on('create', function(room) {
         socket.join(room + "+")
         console.log(room)
     })
 
-    socket.on('sendMessage', ({message, user}) => {
+    socket.on('sendMessage', ({message, user,roomName}) => {
        // console.log("aaaaaaa")
         console.log('message: ' + message)
-        console.log(user)
+        user === undefined ? console.log("User is undefined") : console.log(user)
+        
+        //socket.to(`${roomName}`).emit('recieveMessage', {message})
+        socket.broadcast.to(`${roomName + '+'}`).emit('recieveMessage', {message, user})
     })
 
     // socket.on('getRooms', ({rooms}) =>{

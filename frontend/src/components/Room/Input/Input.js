@@ -6,17 +6,18 @@ import './Input.css'
 import SocketContext from '../../../SocketContext'
 
 //TODO: Stylize the input and button, move it to the bottom of the page
-const Input = ({ message, setMessage, messages, setMessages, user }) => {
+const Input = ({ message, setMessage, messages, setMessages, user, roomName }) => {
 
     const socket = useContext(SocketContext)
 
     function sendMessage(message) {
+        console.log(message)
        if(message && user){
-           socket.emit('sendMessage', {message, user}, () => setMessage(''))
+           socket.emit('sendMessage', {message, user, roomName}, () => setMessage(''))
            setMessages(oldMessages => [...oldMessages, message])
        }
        else if(message && user === undefined){
-        socket.emit('sendMessage', message, () => setMessage(''))
+        socket.emit('sendMessage', {message, roomName}, () => setMessage(''))
         setMessages(oldMessages => [...oldMessages, message])
        }
     }

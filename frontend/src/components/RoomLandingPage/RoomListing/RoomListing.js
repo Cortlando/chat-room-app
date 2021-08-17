@@ -1,22 +1,40 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useContext, } from 'react'
+import { Link } from 'react-router-dom'
 
-import { Button } from '@material-ui/core' 
+import { Button } from '@material-ui/core'
 
 import './RoomListing.css'
 
-import io from 'socket.io-client'
+import io, { Socket } from 'socket.io-client'
 
-const RoomListing = ({roomName}) => {
+import SocketContext from '../../../SocketContext'
 
+const RoomListing = ({ roomName }) => {
+
+    const socket = useContext(SocketContext)
+
+
+    //Send roomName to backend and make use join room they clicked on
+
+
+    function handleClick(roomName) {
+        socket.emit('join room', roomName, () => {
+
+        })
+    }
 
     return (
-        <Button className="Room">
+        <Link onClick={() => handleClick(roomName)} to={`/room?roomName=${roomName}`}>
+            <Button className="Room" >
 
-        <p>{roomName}</p>
+                <p>{roomName}</p>
 
-        
-    </Button>
+            </Button>
+        </Link>
+
     )
+
 }
+
 
 export default RoomListing
