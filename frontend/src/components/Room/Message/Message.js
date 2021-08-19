@@ -4,19 +4,15 @@ import './Message.css';
 import { useAuth0 } from "@auth0/auth0-react";
 //TODO: Add styling to the messages, add names to messsages and make the appear on the right if from sender, or left if from someone else
 //TODO: Figure out how I'm going to get the uses name to show up next to the picture
-const Message = ({ message }) => {
+const Message = React.memo(({ message }) => {
     //console.log(message)
 
-    const { user } = useAuth0()
-    let currentUserNickname = ''
+    // const { user } = useAuth0()
+    // let currentUserNickname = "Guest"
     let Messagename = " "
     let isSentByCurrentUser = false
 
-    if (user) {
-        currentUserNickname = user.nickname
-    } else {
-        currentUserNickname = "Guest"
-    }
+
 
     //1.Extract user name from message
     //2.Compare it to the current users name
@@ -32,8 +28,8 @@ const Message = ({ message }) => {
         isSentByCurrentUser = true
     }
 
-    console.log(Messagename[1])
-    console.log(isSentByCurrentUser)
+  //  console.log(Messagename[1])
+  //  console.log(isSentByCurrentUser)
     // console.log(isSentByCurrentUser)
 
 
@@ -41,7 +37,7 @@ const Message = ({ message }) => {
 
     return (
         isSentByCurrentUser ? (
-            <div className="messageConainter">
+            <div className="messageContainer">
                 <div className="messageBox">
                     <p className="messageTextHomeBackground">
                         <span id="messageTextHome">
@@ -58,11 +54,15 @@ const Message = ({ message }) => {
                         </p>
                     </div>
                     <div className="messageBox">
-                        <p className="messageTextForeign">{message}</p>
+                        <p className="messageTextForeignBackground">
+                            <span id="messageTextForeign">
+                                {message}
+                            </span>
+                        </p>
                     </div>
                 </div>
             )
     )
-}
+})
 
 export default Message

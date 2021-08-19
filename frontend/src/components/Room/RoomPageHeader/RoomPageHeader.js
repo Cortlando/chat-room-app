@@ -18,15 +18,19 @@ const useStyles = makeStyles((theme) => ({
       flexGrow: 1,
       textAlign:'center'
     },
+    appBar: {
+        backgroundColor: '#008598',
+        position: 'static'
+    }
   }));
 
 
-const RoomPageHeader = ({ roomName }) => {
+const RoomPageHeader = React.memo(({ roomName }) => {
     const classes = useStyles()
 
     return (
         <div className={classes.root}> 
-            <AppBar position="static">
+            <AppBar className={classes.appBar}>
                 <Toolbar>
                     <div className={classes.roomName}>
                         {roomName}
@@ -43,6 +47,6 @@ const RoomPageHeader = ({ roomName }) => {
 
         </div>
     )
-}
+})
 
 export default RoomPageHeader

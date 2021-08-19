@@ -1,13 +1,19 @@
-import React from 'react'
+import React, { useCallback, useEffect } from 'react'
 
 import Message from '../Message/Message'
 
 import './ChatBox.css'
 
 //TODO: Make the box fill up most of the screen
-const ChatBox = ({messages, user}) => {
+
+let refreshcount = 0;
+let messagesUseEffectCount = 0;
+const ChatBox = React.memo(({ messages, user}) => {
 
     //console.log(user)
+    // refreshcount++
+    // console.log(`Chat box has refreshed ${refreshcount} times`)
+
 
     if(messages && user){
         return(
@@ -31,12 +37,8 @@ const ChatBox = ({messages, user}) => {
         )
 
     }
-    // return(
-    //     <div className="chatBox">
-    //         This is the chat box
-            
-    //     </div>
-    // )
-}
+
+ 
+},)
 
 export default ChatBox

@@ -10,15 +10,16 @@ import { useAuth0 } from "@auth0/auth0-react";
 import './Room.css'
 
 
-
+let refreshcount = 0
+let socketUseEffectCount = 0
+let messagesUseEffectCount = 0
 //TODO: Look into whether you can change timeout times
 //TODO: (Maybe) move the recieveMessage event into the chatbox component, hopefully will improve performance
-const Room = ({ location }) => {
+const Room = React.memo(({ location }) => {
 
     const [roomName, setRoomName] = useState('')
     const [message, setMessage] = useState('')
-    const [messages, setMessages] = useState([], '')
-   //const [messages, setMessages] = useState([{message:'', byme: false}])
+    const [messages, setMessages] = useState([])
     const { user } = useAuth0()
 
     const socket = useContext(SocketContext)
@@ -31,21 +32,27 @@ const Room = ({ location }) => {
 
         socket.emit('create', `${roomName}`)
 
-
-    }, [location.search, socket])
+        socketUseEffectCount++
+        console.log(`%c1st useEffect has run ${socketUseEffectCount}`, 'color:green')
+    }, [])
 
     useEffect(() => {
         socket.on('recieveMessage', function(msg) {
-         //   console.log(msg)
-            setMessages( [...messages, msg.message + `+-+${msg.nickname}`])
-           // console.log("IT WORKS")
-        })
-    },[socket, messages])
 
-    // if(messages){
-    //     console.log(messages)
-    // }
+            setMessages(messages => [...messages, msg.message + `+-+${msg.nickname}`])
+
+            messagesUseEffectCount++
+            console.log(`%c2nd useEffect has run ${messagesUseEffectCount}`, 'color:red')
+           
+        })
+    },[ socket])
+
+    // refreshcount++
+    // console.log(`room has refreshed ${refreshcount} times`)
+
+    console.log(messages)
     return (
+
         <div className="RoomPage">
             <div className="RoomPageHeader">
                 <RoomPageHeader 
@@ -69,6 +76,6 @@ const Room = ({ location }) => {
         </div>
     )
 
-}
+})
 
 export default Room

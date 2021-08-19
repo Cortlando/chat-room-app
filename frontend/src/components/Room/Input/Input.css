@@ -1,6 +1,12 @@
-.MessageInput{
-    position: fixed;
-    bottom: 0;
-    width : 100%;
-    background-color: black;
+.inputBar input{
+    
+    justify-content: center;
+    border-radius: 5px;
+    width: 100%;
+    height: auto;
+}
+.inputBar{
+    display: flex;
+    width: 100%;
+
 }

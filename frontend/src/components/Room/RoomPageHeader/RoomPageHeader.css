@@ -1,3 +1,8 @@
 .RoomName{
     text-align: center;
 }
+
+.MuiAppBar-colorPrimary{
+    background-color: #008598;
+}
+

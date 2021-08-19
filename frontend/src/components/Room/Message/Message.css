@@ -2,24 +2,30 @@
     clear: both;
     position: relative;
     display: block;
-    background-color: red;
+    background-color: black;
     border-radius: 15px;
-    outline: yellow solid 2px;
+    outline: #5F0098 solid 2px;
     padding-left: 5px;
+    padding-right: 5px;
 }
 
 .messageTextHomeBackground{
     text-align: right;
     justify-content: right;
-    
+    border-radius: 15px;
+    /* outline: blue solid 2px; */
+    /* background-color: #5F0098; */
 }
 
+.messageTextForeignBackground{
+    /* background-color: #981300; */
+}
 #messageTextHome{
     
 }
 
 #messageName{
-    background-color: blue;
+    /* background-color: blue; */
     
 }
 

@@ -43,7 +43,7 @@ io.on('connection', (socket) => {
         console.log(room)
     })
 
-    socket.on('sendMessage', ({message, user,roomName}) => {
+    socket.on('sendMessage', ({message, user, roomName}) => {
        // console.log("aaaaaaa")
         console.log('message: ' + message)
         let nickname = ''
