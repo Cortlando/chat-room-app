@@ -14,7 +14,7 @@ let refreshcount = 0
 let socketUseEffectCount = 0
 let messagesUseEffectCount = 0
 //TODO: Look into whether you can change timeout times
-//TODO: (Maybe) move the recieveMessage event into the chatbox component, hopefully will improve performance
+
 const Room = React.memo(({ location }) => {
 
     const [roomName, setRoomName] = useState('')
