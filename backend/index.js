@@ -13,7 +13,11 @@ const io = new Server(server, corsOptions);
 
 const port = 4000
 
+function getRandomInt() {
+    return Math.floor(Math.random() * 1000);
+  }
 
+let guestNum = getRandomInt()
 
 io.on('connection', (socket) => {
     console.log('a user connected')
@@ -47,7 +51,7 @@ io.on('connection', (socket) => {
        // console.log("aaaaaaa")
         console.log('message: ' + message)
         let nickname = ''
-        user === undefined ? nickname = 'Guest' : nickname = user.nickname
+        user === undefined ? nickname = `Guest ${guestNum}` : nickname = user.nickname
         
         
         //socket.to(`${roomName}`).emit('recieveMessage', {message})

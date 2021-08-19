@@ -52,7 +52,7 @@ const RoomLandingPageHeader = ({ rooms, setRooms }) => {
                 <AddIcon />
               </IconButton>
               <Typography variant="h6" className={classes.title}>
-                Click to create a room
+                Click to create a room(Refresh to see rooms)
               </Typography>
               <CreateRoom open={open} setOpen={setOpen} handleOpen={handleOpen} handleClose={handleClose} />
               {isAuthenticated ? <LogoutButton/> : <LoginButton/>}
