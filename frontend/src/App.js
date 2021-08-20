@@ -9,7 +9,7 @@ import Room from './components/Room/Room'
 import io from 'socket.io-client'
 import SocketContext from './SocketContext'
 
-const ENDPOINT = 'https://cortlando-chat-room-app.herokuapp.com/'
+const ENDPOINT = "http://localhost:4000"
 const socket = io(ENDPOINT)
 
 function App() {
