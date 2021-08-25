@@ -2,9 +2,9 @@
     clear: both;
     position: relative;
     display: block;
-    background-color: black;
+    background-color: #1C2024;
     border-radius: 15px;
-    outline: #5F0098 solid 2px;
+    outline: #1C2024 solid 2px;
     padding-left: 5px;
     padding-right: 5px;
 }
