@@ -3,9 +3,9 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { Button } from '@material-ui/core'
 
 const LoginButton = () => {
-  const { loginWithRedirect } = useAuth0();
+  const { loginWithRedirect, loginWithPopup } = useAuth0();
 
-  return <Button onClick={() => loginWithRedirect()}>Log In</Button>;
+  return <Button onClick={() => loginWithPopup()}>Log In</Button>;
 };
 
 export default LoginButton;

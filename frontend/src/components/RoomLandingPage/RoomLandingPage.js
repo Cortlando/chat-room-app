@@ -21,7 +21,7 @@ import SocketContext from '../../SocketContext'
 
 const RoomLandingPage = () => {
 
-    const [users, setUsers] = useState('')
+    
     const [rooms, setRooms] = useState('')
     const [cleanedRoomList, setCleanedRoomList] = useState([])
     const [isLoading, setLoading] = useState(true)
@@ -61,7 +61,7 @@ const RoomLandingPage = () => {
                 }
             }
 
-            console.log(cleanedRoomList)
+           // console.log(cleanedRoomList)
 
         }
     }, [rooms])

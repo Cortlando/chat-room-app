@@ -1,7 +1,7 @@
 
 import React from 'react';
-import ReactDom from 'react-dom'
-import { BrowserRouter, Route, Switch, Link, HashRouter} from 'react-router-dom'
+
+import {  Route, Switch, HashRouter} from 'react-router-dom'
 
 import RoomLandingPage from './components/RoomLandingPage/RoomLandingPage'
 import Room from './components/Room/Room'
@@ -9,7 +9,7 @@ import Room from './components/Room/Room'
 import io from 'socket.io-client'
 import SocketContext from './SocketContext'
 
-const ENDPOINT = "http://localhost:4000"
+const ENDPOINT = "https://cortlando-chat-room-app.herokuapp.com/"
 const socket = io(ENDPOINT)
 
 function App() {
