@@ -1,7 +1,7 @@
 
 import React from 'react';
-import ReactDom from 'react-dom'
-import { BrowserRouter, Route, Switch, Link} from 'react-router-dom'
+
+import {  Route, Switch, HashRouter} from 'react-router-dom'
 
 import RoomLandingPage from './components/RoomLandingPage/RoomLandingPage'
 import Room from './components/Room/Room'
@@ -9,21 +9,21 @@ import Room from './components/Room/Room'
 import io from 'socket.io-client'
 import SocketContext from './SocketContext'
 
-const ENDPOINT = 'localhost:4000'
+const ENDPOINT = "https://cortlando-chat-room-app.herokuapp.com/"
 const socket = io(ENDPOINT)
 
 function App() {
   return (
     <div className="App">
       <SocketContext.Provider value={socket}>
-      <BrowserRouter>
+      <HashRouter>
         <div>
           <Switch>
             <Route exact path="/" component={RoomLandingPage}/>
             <Route path="/room" component={Room}/>
           </Switch>
         </div>
-      </BrowserRouter>
+      </HashRouter>
       </SocketContext.Provider>
     </div>
   );

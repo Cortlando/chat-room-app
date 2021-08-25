@@ -33,7 +33,7 @@ const Room = React.memo(({ location }) => {
         socket.emit('create', `${roomName}`)
 
         socketUseEffectCount++
-        console.log(`%c1st useEffect has run ${socketUseEffectCount}`, 'color:green')
+        //console.log(`%c1st useEffect has run ${socketUseEffectCount}`, 'color:green')
     }, [])
 
     useEffect(() => {
@@ -42,7 +42,7 @@ const Room = React.memo(({ location }) => {
             setMessages(messages => [...messages, msg.message + `+-+${msg.nickname}`])
 
             messagesUseEffectCount++
-            console.log(`%c2nd useEffect has run ${messagesUseEffectCount}`, 'color:red')
+            //console.log(`%c2nd useEffect has run ${messagesUseEffectCount}`, 'color:red')
            
         })
     },[ socket])

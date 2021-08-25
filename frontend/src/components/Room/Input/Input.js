@@ -26,8 +26,10 @@ const Input = React.memo(({ message, setMessage, setMessages, user, roomName }) 
             setMessages(oldMessages => [...oldMessages, message])
         }
 
+        //Clears input after message is sent
+        setMessage('')
         refreshcount++
-        console.log(`sendMessage has been ran ${refreshcount} times`)
+       // console.log(`sendMessage has been ran ${refreshcount} times`)
 
         
     }, [roomName, setMessage, setMessages, socket, user])

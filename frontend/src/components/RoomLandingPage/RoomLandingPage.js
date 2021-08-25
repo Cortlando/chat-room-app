@@ -21,7 +21,7 @@ import SocketContext from '../../SocketContext'
 
 const RoomLandingPage = () => {
 
-    const [users, setUsers] = useState('')
+    
     const [rooms, setRooms] = useState('')
     const [cleanedRoomList, setCleanedRoomList] = useState([])
     const [isLoading, setLoading] = useState(true)
@@ -36,8 +36,8 @@ const RoomLandingPage = () => {
 
         socket.on("sentRooms", (arg) => {
             //Gets stringifyed array of room names from server
-            console.log(arg.roomList)
-            console.log(typeof(arg.roomList))
+           // console.log(arg.roomList)
+           // console.log(typeof(arg.roomList))
             setRooms(arg.roomList)
             //console.log(rooms)
         })
@@ -50,18 +50,18 @@ const RoomLandingPage = () => {
     useEffect(() =>{
 
         if(rooms !== ""){
-            console.log(rooms)
-            console.log("Got rooms")
+           // console.log(rooms)
+          //  console.log("Got rooms")
             let roomList = JSON.parse(rooms)
-            console.log(roomList)
+          //  console.log(roomList)
             for(let i = 0; i < roomList.length; i++){
                 if(roomList[i][0].includes('+')){
-                    // cleanedRoomList.push(roomList[i][0].slice(0, roomList[i][0].length -1 ))
+                    
                     setCleanedRoomList( oldList => [...oldList, roomList[i][0].slice(0, roomList[i][0].length -1 )])
                 }
             }
 
-            console.log(cleanedRoomList)
+           
 
         }
     }, [rooms])
