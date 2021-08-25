@@ -12,3 +12,7 @@ html body div#root div.App div div.RoomListings div.RoomListing button.MuiButton
     text-align: left;
     
 }
+
+.Room{
+    margin: 100px;
+}
