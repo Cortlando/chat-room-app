@@ -9,7 +9,7 @@ import Room from './components/Room/Room'
 import io from 'socket.io-client'
 import SocketContext from './SocketContext'
 
-const ENDPOINT = "http://node-express-env.eba-favsdmnr.us-east-2.elasticbeanstalk.com/"
+const ENDPOINT = "https://cortlando-chat-room-app.herokuapp.com/"
 const socket = io(ENDPOINT)
 
 function App() {
