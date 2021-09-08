@@ -5,7 +5,7 @@ const LogoutButton = () => {
   const { logout } = useAuth0();
 
   return (
-    <Button onClick={() => logout({ returnTo: window.location.origin })}>
+    <Button onClick={() => logout({ returnTo: 'https://cortlando.github.io/chat-room-app-frontend/#/' })}>
       Log Out
     </Button>
   );
