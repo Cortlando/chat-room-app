@@ -36,6 +36,8 @@ io.on('connection', (socket) => {
         console.log('User Disconnected')
     })
 
+    
+    //Prints out the name of the room when someone join/creates room
     socket.on('join room', (roomName) => {
         console.log("Joined Room")
         console.log(roomName)
@@ -47,14 +49,17 @@ io.on('connection', (socket) => {
         console.log(room)
     })
 
+    //Gets the message that was sent and sends the message to all the users
     socket.on('sendMessage', ({message, user, roomName}) => {
        // console.log("aaaaaaa")
         console.log('message: ' + message)
+        //Gets the name of the person that sent the message(or gives them a guest name)
         let nickname = ''
         user === undefined ? nickname = `Guest ${guestNum}` : nickname = user.nickname
         
         
         //socket.to(`${roomName}`).emit('recieveMessage', {message})
+        //Sends message and name
         socket.broadcast.to(`${roomName + '+'}`).emit('recieveMessage', {message, nickname})
     })
 

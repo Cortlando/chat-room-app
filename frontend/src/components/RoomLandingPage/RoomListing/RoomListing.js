@@ -14,7 +14,7 @@ const RoomListing = ({ roomName }) => {
     const socket = useContext(SocketContext)
 
 
-    //Send roomName to backend and make use join room they clicked on
+    //Send roomName to backend, was used for debugging
 
 
     function handleClick(roomName) {

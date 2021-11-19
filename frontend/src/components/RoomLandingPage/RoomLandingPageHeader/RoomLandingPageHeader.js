@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-const RoomLandingPageHeader = ({ rooms, setRooms }) => {
+const RoomLandingPageHeader = () => {
 
     const classes = useStyles();
 
