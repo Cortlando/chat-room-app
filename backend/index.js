@@ -59,7 +59,7 @@ io.on('connection', (socket) => {
         
         
         //socket.to(`${roomName}`).emit('recieveMessage', {message})
-        //Sends message and name
+        //Sends message and name to everyone but the sender of the message
         socket.broadcast.to(`${roomName + '+'}`).emit('recieveMessage', {message, nickname})
     })
 
