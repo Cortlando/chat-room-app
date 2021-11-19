@@ -37,5 +37,5 @@ https://cortlando.github.io/chat-room-app-frontend/#/
 
 
 ## Known Bugs
-- Everyone unlogged in user gets the same guest number attached to them 
+- Every unloggedin user gets the same guest number attached to them 
 - Chat box doesn't automatically scroll when new messages are sent
