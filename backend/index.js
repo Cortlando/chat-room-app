@@ -17,11 +17,11 @@ function getRandomInt() {
     return Math.floor(Math.random() * 1000);
   }
 
-let guestNum = getRandomInt()
+
 
 io.on('connection', (socket) => {
     console.log('a user connected')
-
+    let guestNum = getRandomInt()
    // socket.emit(io.sockets.adapter.rooms)
 
    //io.emit(io.sockets.adapter.rooms)
