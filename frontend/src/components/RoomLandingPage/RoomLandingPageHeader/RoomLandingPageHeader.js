@@ -45,13 +45,13 @@ const RoomLandingPageHeader = ({ rooms, setRooms }) => {
 
     
     return (
-        <div className={classes.root}>
+        <div className={classes.root} >
           <AppBar position="static">
             <Toolbar>
               <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu" onClick={handleOpen}>
                 <AddIcon />
               </IconButton>
-              <Typography variant="h6" className={classes.title}>
+              <Typography variant="h6" className={classes.title} data-testid={`Tid1`}>
                 Click to create a room(Refresh to see rooms)
               </Typography>
               <CreateRoom open={open} setOpen={setOpen} handleOpen={handleOpen} handleClose={handleClose} />

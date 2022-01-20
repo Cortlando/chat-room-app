@@ -17,7 +17,7 @@ const RoomListings = ({cleanedRoomList}) => {
     else{
         return(
             <div>
-                Hel
+                
             </div>
         )
     }
